@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.tymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <th th:text="${post.id}"></th>
+                <th th:text="${post.title}"></th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="2">작성자: <span th:text="${post.author}"></span></td>
+                </tr>
+                <tr>
+                    <td colspan="2">내용: <span th:text="${post.context}"></span></td>
+                </tr>
+            </tbody>
+        </table>
+        <button th:onclick="|location.href='@{/posts/{id}/edit(id=${post.id})}'|"
+                type="button">수정</button>
+        <a href="/posts">글목록으로 돌아가기</a>
+        <form th:action="@{/posts/{id}/delete(id=${post.id})}" th:method="post">
+            <button type="submit">삭제</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
